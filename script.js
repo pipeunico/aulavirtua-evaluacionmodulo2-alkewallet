@@ -100,6 +100,7 @@ function sendMoney() {
 }
 
 $(function(){
+  loadContacts();
  if($('#saldo').length) $('#saldo').text(sessionStorage.getItem('saldo'));
 
  if($('#transactionsList').length){
