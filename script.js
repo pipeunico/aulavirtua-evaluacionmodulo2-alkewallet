@@ -60,3 +60,14 @@ $(function(){
    });
  }
 });
+
+function logout() {
+
+    sessionStorage.removeItem('saldo');
+    sessionStorage.removeItem('transactions');
+    sessionStorage.removeItem('contacts');
+
+    alert("Sesión cerrada correctamente");
+
+    window.location.href = "index.html";
+}
