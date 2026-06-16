@@ -1,32 +1,57 @@
 
-const USER='usuario@alkewallet.com';
+//Credenciales fijas para el login.
+const USER='aulavirtual@alkewallet.com';
 const PASS='0*fhD$67834Sd&lK';
 
+//Configuración inicial del almacenamiento en sesión para saldo (inicial en cero), transacciones y contactos.
 if(!sessionStorage.getItem('saldo')) sessionStorage.setItem('saldo',0);
 if(!sessionStorage.getItem('transactions')) sessionStorage.setItem('transactions','[]');
 if(!sessionStorage.getItem('contacts')) sessionStorage.setItem('contacts','[]');
 
+//Función para validar el login.
 function login(){
  let e=document.getElementById('email').value;
  let p=document.getElementById('password').value;
  if(e===USER && p===PASS){ window.location='menu.html'; }
- else document.getElementById('msg').innerHTML='<p class="text-danger">Credenciales inválidas</p>';
+ else document.getElementById('msg').innerHTML='<p class="text-danger">Credenciales incorrectas</p>';
 }
 
+//Función para agregar una transacción al historial.
 function addTransaction(t){
  let arr=JSON.parse(sessionStorage.getItem('transactions'));
  arr.unshift(t);
  sessionStorage.setItem('transactions',JSON.stringify(arr));
 }
 
+//Función para realizar un depósito
 function deposit(){
- let m=Number(document.getElementById('depositAmount').value);
- let s=Number(sessionStorage.getItem('saldo'))+m;
- sessionStorage.setItem('saldo',s);
- addTransaction('Depósito: $'+m);
- $('#depositMsg').hide().html('Depósito realizado').fadeIn();
+
+    let montoDeposito =
+        Number(document.getElementById('depositAmount').value);
+
+    if (isNaN(montoDeposito) || montoDeposito <= 0) {
+
+        alert("Monto inválido");
+        return;
+
+    }
+
+    let saldoActual =
+        Number(sessionStorage.getItem('saldo')) + montoDeposito;
+
+    sessionStorage.setItem('saldo', saldoActual);
+
+    addTransaction('Depósito: $' + montoDeposito);
+
+    $('#depositMsg')
+        .hide()
+        .html('Depósito realizado')
+        .fadeIn();
 }
 
+//Funcines y condiciones para enviar dinero a un contacto y crear el contacto si no existe
+//Seleccionar contacto creado para realizar la transferencia.
+//Revisa saldo disponible y monto a transferir, si es válido realiza la transferencia y actualiza el saldo y el historial de transacciones.
 function sendMoney() {
 
     let newContact =
@@ -99,6 +124,7 @@ function sendMoney() {
 
 }
 
+//Función para cargar contactos en el select de la página de envío de dinero.
 $(function(){
   loadContacts();
  if($('#saldo').length) $('#saldo').text(sessionStorage.getItem('saldo'));
@@ -110,6 +136,7 @@ $(function(){
 
  });
 
+//Función para cerrar sesión y limpiar el almacenamiento de datos (montos, contactos y transacciones) en sesión.
 function logout() {
 
     sessionStorage.removeItem('saldo');
@@ -121,6 +148,7 @@ function logout() {
     window.location.href = "index.html";
 }
 
+//Función para seleccionar contactos en el selector de la página de envío de dinero.
 function loadContacts() {
 
     let contacts =
@@ -132,7 +160,7 @@ function loadContacts() {
     if (!select) return;
 
     select.innerHTML =
-        '<option value="">Seleccione un contacto</option>';
+        '<option value="">Seleccione un contacto a transferir</option>';
 
     contacts.forEach(contact => {
 

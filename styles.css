@@ -1,3 +1,26 @@
-
 body{font-family:Arial,sans-serif}
-.card{border-radius:12px}
+.card{border-radius:20px}
+body {
+    background-color: #f4f6f9;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #b0def0, #263a58);
+    min-height: 100vh;
+}
+
+.btn {
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

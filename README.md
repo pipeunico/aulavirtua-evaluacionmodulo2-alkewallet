@@ -1,9 +1,9 @@
-Alke Wallet
+Alke Wallet - Proyecto Aula Virtua - Evaluacion Modulo 2
 ------------------------------------------------------
-Aplicación de billetera digital.
+Aplicación de billetera digital (Digital Wallet).
 ------------------------------------------------------
 
-Funciones
+Funciones:
 
 Login con credenciales predefinidas.
 Visualización de saldo.
@@ -11,11 +11,12 @@ Depósitos.
 Transferencias.
 Historial de movimientos.
 Almacenamiento temporal con sessionStorage.
+
 --------------------------------------------------------
+
 Credenciales
 
-Usuario: usuario@alkewallet.com
+Usuario: aulavirtual@alkewallet.com
 Clave  : 0*fhD$67834Sd&lK
-
 
 ******************************************************
