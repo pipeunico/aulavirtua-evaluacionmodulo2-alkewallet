@@ -8,7 +8,7 @@ Funciones:
 Login con credenciales predefinidas.
 Visualización de saldo.
 Depósitos.
-Transferencias.
+Transferencias, creacion de contactos de forma simultanea.
 Historial de movimientos.
 Almacenamiento temporal de saldos y contactos con sessionStorage (mientras dura la sesion abierta).
 
