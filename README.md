@@ -10,7 +10,7 @@ Visualización de saldo.
 Depósitos.
 Transferencias.
 Historial de movimientos.
-Almacenamiento temporal con sessionStorage.
+Almacenamiento temporal de saldos y contactos con sessionStorage (mientras dura la sesion abierta).
 
 --------------------------------------------------------
 
